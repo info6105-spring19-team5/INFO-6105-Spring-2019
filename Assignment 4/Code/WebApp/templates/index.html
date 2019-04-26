@@ -1,0 +1,88 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+    <head>
+        <title>K3G</title>
+       <link rel="stylesheet" media="screen" href ="static/bootstrap.min.css">
+       <link rel="stylesheet" href="static/bootstrap-theme.min.css">
+       <meta name="viewport" content = "width=device-width, initial-scale=1.0">
+	   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+  
+ <style>
+ .panel-heading{
+ font-size:24px;
+ padding-top:10px;
+ background-color:dimgray
+ }
+.container{
+padding-top:0px;
+}
+ #section2{
+ color:white;
+ }
+ </style>
+    </head>
+    <body>
+ 
+ <div class="background"  style="background-image: url(static/1.jpg); min-height: 100%;
+ min-width: 1024px;
+ width: 100%;
+ height: auto;
+ position: fixed;
+ top: 0;
+ left: 0;">
+<div class="container">
+ 
+ <br>
+ <br>
+ <nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="/">K3G Music Company</a>
+    </div>
+    <ul class="nav navbar-nav">
+        <li><a href="/">Home</a></li>
+        <li><a href="/chart">CountryList</a></li>
+      <li><a href="/lyrics">Song Lyrics</a></li>
+    </ul>
+  </div>
+</nav>
+ <div id="section2" style="padding-top:20px;padding-bottom:70px">
+  <h1>K3G Music Enterprises</h1>
+  <p>We are an ML-based music streaming platform that enable listeners to listen to music based on how they feel</p>
+  <p>We have also listed the songs based on country and give a list of top songs in that country</p>
+  <p>with the name of song, artists name, mood and Emoji based on mood predicted. We have used Musixmatch</p>
+  <p>api to get the to songs in a given region with the artist names. Our model also predicts</p>
+  <p>the mood of the songs by taking the lyrics as input and predicting if its happy or sad.</p>
+  <p>The App also provides a text area where you can input </p>
+  <p>the lyrics of your choice to predict the mood </p>
+</div> 
+  <br>
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+ 
+        {% for message in messages %}
+            {% if "Error" not in message[1]: %}
+                <div class="alert alert-info">
+                <strong>Success! </strong> {{ message[1] }}
+                </div>
+            {% endif %}
+ 
+            {% if "Error" in message[1]: %}
+                <div class="alert alert-warning">
+                {{ message[1] }}
+                </div>
+            {% endif %}
+        {% endfor %}
+            {% endif %}
+        {% endwith %}
+ 
+</div>
+<br>            
+</div>
+</div>
+</div>
+</body>
+</html>

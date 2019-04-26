@@ -1,0 +1,109 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+    <head>
+        <title>K3G</title>
+       <link rel="stylesheet" media="screen" href ="static/bootstrap.min.css">
+       <link rel="stylesheet" href="static/bootstrap-theme.min.css">
+       <meta name="viewport" content = "width=device-width, initial-scale=1.0">
+	   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+ <style>
+ .panel-heading{
+ font-size:24px;
+ padding-top:10px;
+ background-color:dimgray
+ }
+.container{
+padding-top:0px;
+}
+
+select {
+  margin: 50px;
+  width: 150px;
+  padding: 5px 35px 5px 5px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  height: 34px;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+}
+
+
+ </style>
+    </head>
+    <body>
+ 
+ <div class="background"  style="background-image: url(static/1.jpg); min-height: 100%;
+ min-width: 1024px;
+ width: 100%;
+ height: auto;
+ position: fixed;
+ top: 0;
+ left: 0;">
+<div class="container">
+ 
+ <br>
+ <br>
+ <nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="/">K3G Music Company</a>
+    </div>
+    <ul class="nav navbar-nav">
+      <li><a href="/">Home</a></li>
+      <li><a href="/chart">CountryList</a></li>
+      <li><a href="/lyrics">Song Lyrics</a></li>
+    </ul>
+  </div>
+</nav>
+ 
+ <div class="panel panel-primary">
+    </div>
+  <form  name="countryList" action="/predict" method="POST"role="form">
+    {{ form.csrf }}
+    <div class="form-group">
+    </div>
+	<div class="container">
+  <h2 style="color: aliceblue">Country Mood</h2>
+  <p style="color: aliceblue">Check whats the mood of the nation</p>                                      
+  <div class="dropdown">
+      <select name="country">
+          <option value="au">Australia</option>
+          <option value="ca">Canada</option>
+          <option value="uk">UK</option>        
+      </select>
+      <button type="submit" class="btn btn-success">Search</button>
+  </div>
+  <br>	
+</div> 
+  </form>
+ 
+  <br>
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+ 
+        {% for message in messages %}
+            {% if "Error" not in message[1]: %}
+                <div class="alert alert-info">
+                <strong>Success! </strong> {{ message[1] }}
+                </div>
+            {% endif %}
+ 
+            {% if "Error" in message[1]: %}
+                <div class="alert alert-warning">
+                {{ message[1] }}
+                </div>
+            {% endif %}
+        {% endfor %}
+            {% endif %}
+        {% endwith %}
+ 
+</div>
+<br>            
+</div>
+</div>
+</div>
+</body>
+</html>
