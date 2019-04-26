@@ -1,0 +1,23 @@
+FROM python:latest
+
+RUN pip install python-csv
+RUN pip install pandas
+RUN pip install cytoolz
+RUN pip install dask
+RUN pip install matplotLib
+
+
+
+
+
+COPY ./tfidf_textrank_wordcount.csv /
+
+COPY Clusters / /Clusters/
+RUN ls -la /Clusters/
+
+COPY Data / /Data/
+RUN ls -la /Data/
+
+COPY ./Analysis_Pipelined.py /tmp
+
+CMD ["python", "./tmp/Analysis_Pipelined.py"]

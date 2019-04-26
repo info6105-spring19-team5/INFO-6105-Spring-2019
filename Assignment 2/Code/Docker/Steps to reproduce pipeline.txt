@@ -1,0 +1,7 @@
+1)Run the following command to pull the image:
+ docker  pull harshitha95/project2:team5
+
+2)Run the following command to run the program: 
+docker run -it harshitha95/project2:team5
+
+3)Expected results - 3 folders namely, "Output", "Cluster Scores" and "Charts"  containing the results, are generated.
